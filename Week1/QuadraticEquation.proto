@@ -1,9 +1,16 @@
 syntax = "proto3";
 
-message Number {
-    float.value = 1;
+message Coefficients {
+    int a = 1;
+    int b = 2;
+    int c = 3;
+}
+
+message Solution {
+    string x1 = 1;
+    string x2 = 2;
 }
 
 service QuadraticEquation {
-    rpc quadraticEquation() returns (Number) {}
+    rpc quadraticEquation(Coefficients) returns (Solution) {}
 }
