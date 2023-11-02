@@ -2,23 +2,25 @@ from concurrent import futures
 import logging
 
 import grpc
-import helloworld_pb2
-import helloworld_pb2_grpc
+import QuadraticEquation_pb2
+import QuadraticEquation_pb2_grpc
+
+import QuadraticEquation
 
 
-class Greeter(helloworld_pb2_grpc.GreeterServicer):
+class QuadraticEquationServicer(QuadraticEquation_pb2_grpc.QuadraticEquationServicer):
 
-    def SayHello(self, request, context):
-        return helloworld_pb2.HelloReply(message=f"Hello, {request.name}!")
-
-    def SayHelloAgain(self, request, context):
-        return helloworld_pb2.HelloReply(message=f"Hello again, {request.name}!")
+    def quadraticEquation(self, request, context):
+        response = QuadraticEquation_pb2.Coefficients()
+        response.value = QuadraticEquation.quadraticEquation(request.value)
+        return response
 
 
 def serve():
     port = "50051"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    helloworld_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+    QuadraticEquation_pb2_grpc.add_QuadraticEquationServicer_to_server(
+        QuadraticEquationServicer(), server)
     server.add_insecure_port("[::]:" + port)
     server.start()
     print("Server started, listening on " + port)
