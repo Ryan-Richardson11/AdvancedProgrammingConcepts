@@ -1,9 +1,9 @@
 syntax = "proto3";
 
 message Coefficients {
-    int32 a = 1;
-    int32 b = 2;
-    int32 c = 3;
+    string a = 1;
+    string b = 2;
+    string c = 3;
 }
 
 message Solution {

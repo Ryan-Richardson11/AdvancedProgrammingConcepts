@@ -5,16 +5,23 @@ import grpc
 import QuadraticEquation_pb2
 import QuadraticEquation_pb2_grpc
 
-import QuadraticEquation
+from QuadraticEquation import quadraticEquation
 
 
 class QuadraticEquationServicer(QuadraticEquation_pb2_grpc.QuadraticEquationServicer):
 
     def quadraticEquation(self, request, context):
-        response = QuadraticEquation_pb2.Coefficients()
-        response.value = QuadraticEquation.quadraticEquation(request.value)
-        return response
+        a = request.a
+        b = request.b
+        c = request.c
 
+        response = QuadraticEquation_pb2.Solution()
+
+        result = quadraticEquation(a, b, c)
+
+        response.x1 = result[0]
+        response.x2 = result[1]
+        return response
 
 def serve():
     port = "50051"

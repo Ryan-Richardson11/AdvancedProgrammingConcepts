@@ -12,8 +12,15 @@ def run():
         stub = QuadraticEquation_pb2_grpc.QuadraticEquationStub(channel)
         response = stub.quadraticEquation(str)
 
-        print(response.value)
+        a = input("Enter coefficient a: ")
+        b = input("Enter coefficient b: ")
+        c = input("Enter coefficient c: ")
 
+        coefficients = QuadraticEquation_pb2.Coefficients(a=a, b=b, c=c)
+        response = stub.quadraticEquation(coefficients)
+
+        print(response.x1)
+        print(response.x2)
 
 if __name__ == "__main__":
     logging.basicConfig()

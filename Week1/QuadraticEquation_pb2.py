@@ -11,18 +11,19 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17QuadraticEquation.proto\"/\n\x0c\x43oefficients\x12\t\n\x01\x61\x18\x01 \x01(\x05\x12\t\n\x01\x62\x18\x02 \x01(\x05\x12\t\n\x01\x63\x18\x03 \x01(\x05\"\"\n\x08Solution\x12\n\n\x02x1\x18\x01 \x01(\t\x12\n\n\x02x2\x18\x02 \x01(\t2D\n\x11QuadraticEquation\x12/\n\x11quadraticEquation\x12\r.Coefficients\x1a\t.Solution\"\x00\x62\x06proto3')
+
+
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17QuadraticEquation.proto\"/\n\x0c\x43oefficients\x12\t\n\x01\x61\x18\x01 \x01(\t\x12\t\n\x01\x62\x18\x02 \x01(\t\x12\t\n\x01\x63\x18\x03 \x01(\t\"\"\n\x08Solution\x12\n\n\x02x1\x18\x01 \x01(\t\x12\n\n\x02x2\x18\x02 \x01(\t2D\n\x11QuadraticEquation\x12/\n\x11quadraticEquation\x12\r.Coefficients\x1a\t.Solution\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(
-    DESCRIPTOR, 'QuadraticEquation_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'QuadraticEquation_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
-    DESCRIPTOR._options = None
-    _globals['_COEFFICIENTS']._serialized_start = 27
-    _globals['_COEFFICIENTS']._serialized_end = 74
-    _globals['_SOLUTION']._serialized_start = 76
-    _globals['_SOLUTION']._serialized_end = 110
-    _globals['_QUADRATICEQUATION']._serialized_start = 112
-    _globals['_QUADRATICEQUATION']._serialized_end = 180
+  DESCRIPTOR._options = None
+  _globals['_COEFFICIENTS']._serialized_start=27
+  _globals['_COEFFICIENTS']._serialized_end=74
+  _globals['_SOLUTION']._serialized_start=76
+  _globals['_SOLUTION']._serialized_end=110
+  _globals['_QUADRATICEQUATION']._serialized_start=112
+  _globals['_QUADRATICEQUATION']._serialized_end=180
 # @@protoc_insertion_point(module_scope)

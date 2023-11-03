@@ -1,11 +1,9 @@
 import math
 
 
-def quadraticEquation():
-    a = int(input("What is the value of a: "))
-    b = int(input("What is the value of b: "))
-    c = int(input("What is the value of c: "))
-
+def quadraticEquation(a, b, c):
+    a, b, c = int(a), int(b), int(c)
+    
     if ((b**2) - (4 * a * c)) > 0:
         return "The answer does not exist"
     else:
