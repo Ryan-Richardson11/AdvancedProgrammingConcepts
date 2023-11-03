@@ -10,7 +10,6 @@ import QuadraticEquation_pb2_grpc
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = QuadraticEquation_pb2_grpc.QuadraticEquationStub(channel)
-        response = stub.quadraticEquation(str)
 
         a = input("Enter coefficient a: ")
         b = input("Enter coefficient b: ")

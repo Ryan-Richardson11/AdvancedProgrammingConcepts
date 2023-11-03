@@ -4,7 +4,7 @@ import math
 def quadraticEquation(a, b, c):
     a, b, c = int(a), int(b), int(c)
     
-    if ((b**2) - (4 * a * c)) > 0:
+    if ((b**2) - (4 * a * c)) < 0:
         return "The answer does not exist"
     else:
         x1 = (-b + math.sqrt((b**2) - (4 * a * c))) / (2 * a)
