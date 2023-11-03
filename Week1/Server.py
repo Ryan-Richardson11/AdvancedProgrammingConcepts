@@ -18,9 +18,12 @@ class QuadraticEquationServicer(QuadraticEquation_pb2_grpc.QuadraticEquationServ
         response = QuadraticEquation_pb2.Solution()
 
         result = quadraticEquation(a, b, c)
-
-        response.x1 = result[0]
-        response.x2 = result[1]
+        if result == None:
+            response.x1 = "The answer does not exist."
+            response.x2 = "The answer does not exist."
+        else:
+            response.x1 = result[0]
+            response.x2 = result[1]
         return response
 
 def serve():
