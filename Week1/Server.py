@@ -11,12 +11,15 @@ from QuadraticEquation import quadraticEquation
 class QuadraticEquationServicer(QuadraticEquation_pb2_grpc.QuadraticEquationServicer):
 
     def quadraticEquation(self, request, context):
+        # Takes in 3 requested values as parameters
         a = request.a
         b = request.b
         c = request.c
 
+        # Returns response as solution identified in .proto file
         response = QuadraticEquation_pb2.Solution()
 
+        # Checks functions result then sends back response to client
         result = quadraticEquation(a, b, c)
         if result == None:
             response.x1 = "The answer does not exist."
