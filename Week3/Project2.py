@@ -1,25 +1,30 @@
 import requests
 
 def get_destination():
-    latitude = float(input("Enter the locations latitude: "))
-    if latitude < -90 or latitude > 90:
-        print("Invalid. Latitude must be between -90 and 90")
+     
+     while True:
+        try:
+            latitude = float(input("Enter the location's latitude: "))
+            if latitude < -90 or latitude > 90:
+                print("Invalid. Latitude must be between -90 and 90")
 
-    longitude = float(input("Enter the locations longitude: "))
-    if longitude < -180 or longitude > 180:
-        print("Invalid. Longitude must be between -180 and 180")
+            longitude = float(input("Enter the location's longitude: "))
+            if longitude < -180 or longitude > 180:
+                print("Invalid. Longitude must be between -180 and 180")
 
-    url = f"https://api.weather.gov/points/{latitude},{longitude}"
+            url = f"https://api.weather.gov/points/{latitude},{longitude}"
 
-    response = requests.get(url)
+            response = requests.get(url)
 
-    if response.ok:
-        office = response.json()['properties']['cwa']
-        gridX = response.json()['properties']['gridX']
-        gridY = response.json()['properties']['gridY']
-        return (office, gridX, gridY)
-    else:
-        raise Exception('Failed to fetch location.')
+            if response.ok:
+                office = response.json()['properties']['cwa']
+                gridX = response.json()['properties']['gridX']
+                gridY = response.json()['properties']['gridY']
+                return (office, gridX, gridY)
+            else:
+                print("There is no forcast data for that location.")
+        except:
+            print("Please Enter valid coordinates.")
 
 def get_forecast(office, gridX, gridY):
     # Construct the API URL for the given latitude and longitude
@@ -40,12 +45,13 @@ def get_forecast(office, gridX, gridY):
 
     # If the response is not successful, raise an exception
     else:
-        raise Exception('Failed to fetch forecast.')
+        print('Failed to fetch forecast.')
 
+while True:
 
-try:
     location = get_destination()
-    forecast = get_forecast(location[0], location[1], location[2])
-    print(forecast)
-except Exception as e:
-    print(f"Error: {e}")
+    if location is not None:
+        forecast = get_forecast(location[0], location[1], location[2])
+        print(forecast)
+    else:
+        print('There is no forcast data for that location.')
