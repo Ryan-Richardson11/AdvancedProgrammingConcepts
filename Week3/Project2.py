@@ -1,15 +1,22 @@
 import requests
 
-def get_destination(latitude, longitude):
+def get_destination():
+    latitude = float(input("Enter the locations latitude: "))
+    if latitude < -90 or latitude > 90:
+        print("Invalid. Latitude must be between -90 and 90")
+
+    longitude = float(input("Enter the locations longitude: "))
+    if longitude < -180 or longitude > 180:
+        print("Invalid. Longitude must be between -180 and 180")
 
     url = f"https://api.weather.gov/points/{latitude},{longitude}"
 
     response = requests.get(url)
-    print(response.json())
+
     if response.ok:
-        office = response.json()['properties']['periods'][0]['officeId']
-        gridX = response.json()['properties']['periods'][0]['gridX']
-        gridY = response.json()['properties']['periods'][0]['gridY']
+        office = response.json()['properties']['cwa']
+        gridX = response.json()['properties']['gridX']
+        gridY = response.json()['properties']['gridY']
         return (office, gridX, gridY)
     else:
         raise Exception('Failed to fetch location.')
@@ -36,6 +43,9 @@ def get_forecast(office, gridX, gridY):
         raise Exception('Failed to fetch forecast.')
 
 
-location = get_destination(37.7749, -122.4194)
-forcast = get_forecast(location[0], location[1], location[2])
-print(forcast)
+try:
+    location = get_destination()
+    forecast = get_forecast(location[0], location[1], location[2])
+    print(forecast)
+except Exception as e:
+    print(f"Error: {e}")
