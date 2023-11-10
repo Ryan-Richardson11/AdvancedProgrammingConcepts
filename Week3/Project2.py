@@ -1,5 +1,18 @@
 import requests
 
+def get_destination(latitude, longitude):
+
+    url = f"https://api.weather.gov/points/{latitude},{longitude}"
+
+    response = requests.get(url)
+    print(response.json())
+    if response.ok:
+        office = response.json()['properties']['periods'][0]['officeId']
+        gridX = response.json()['properties']['periods'][0]['gridX']
+        gridY = response.json()['properties']['periods'][0]['gridY']
+        return (office, gridX, gridY)
+    else:
+        raise Exception('Failed to fetch location.')
 
 def get_forecast(office, gridX, gridY):
     # Construct the API URL for the given latitude and longitude
@@ -23,9 +36,6 @@ def get_forecast(office, gridX, gridY):
         raise Exception('Failed to fetch forecast.')
 
 
-# Example usage information to New York, NY
-office = "OKX"
-gridX = 33
-gridY = 35
-forecast = get_forecast(office, gridX, gridY)
-print(forecast)
+location = get_destination(37.7749, -122.4194)
+forcast = get_forecast(location[0], location[1], location[2])
+print(forcast)
