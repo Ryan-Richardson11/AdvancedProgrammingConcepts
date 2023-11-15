@@ -1,8 +1,9 @@
 import requests
 
+
 def get_destination():
-     
-     while True:
+
+    while True:
         try:
             latitude = float(input("Enter the location's latitude: "))
             if latitude < -90 or latitude > 90:
@@ -11,11 +12,11 @@ def get_destination():
             longitude = float(input("Enter the location's longitude: "))
             if longitude < -180 or longitude > 180:
                 print("Invalid. Longitude must be between -180 and 180")
-
+            # Construct the API URL for the given latitude and longitude
             url = f"https://api.weather.gov/points/{latitude},{longitude}"
-
+            # Send a GET request to the API URL
             response = requests.get(url)
-
+            # If the response is successful, returns office, gridX, and gridY data
             if response.ok:
                 office = response.json()['properties']['cwa']
                 gridX = response.json()['properties']['gridX']
@@ -25,6 +26,7 @@ def get_destination():
                 print("There is no forcast data for that location.")
         except:
             print("Please Enter valid coordinates.")
+
 
 def get_forecast(office, gridX, gridY):
     # Construct the API URL for the given latitude and longitude
@@ -43,14 +45,16 @@ def get_forecast(office, gridX, gridY):
             str(response.json()['properties']['periods'][0]['shortForecast'])
         return forecast
 
-    # If the response is not successful, raise an exception
+    # If the response is not successful, print out failure.
     else:
         print('Failed to fetch forecast.')
 
-while True:
 
+while True:
+    # Calls get_destination given the latitude and longitude
     location = get_destination()
     if location is not None:
+        # Inputs the values returned into get_forcast and returns the forcast for that location if available.
         forecast = get_forecast(location[0], location[1], location[2])
         print(forecast)
     else:
