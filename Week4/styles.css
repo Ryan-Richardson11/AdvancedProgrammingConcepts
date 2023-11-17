@@ -7,9 +7,17 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    margin-left: 100px;
+}
+
 p {
     color:  #002244;
     text-align: center;
+}
+
+dl {
+    margin-left: 200px;
 }
 
 dt {
@@ -18,5 +26,20 @@ dt {
 
 dd {
     color: #002244;
+}
+
+button {
+    text-align: left;
+    cursor: pointer;
+}
+
+button.completed {
+    background-color: #C60C30;
+    color: white;
+}
+
+button.tbd {
+    background-color: #002244;
+    color: white;
 }
 
