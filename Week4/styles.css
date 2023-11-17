@@ -33,13 +33,3 @@ button {
     cursor: pointer;
 }
 
-button.completed {
-    background-color: #C60C30;
-    color: white;
-}
-
-button.tbd {
-    background-color: #002244;
-    color: white;
-}
-
