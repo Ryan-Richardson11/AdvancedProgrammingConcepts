@@ -30,30 +30,29 @@ function handleClick(event) {
 }
 
 function displayFoodInformation(data) {
-    if (data.product && data.product.nutriments) {
-        console.log(data)
-        var product = data.product;
-        var servingSize = product.serving_size;
-        var protein = product.nutriments.proteins;
-        var fat = product.nutriments.fat;
-        var carbohydrates = product.nutriments.carbohydrates;
-        var saturatedFat = product.nutriments.saturated-fat;
-        var fiber = product.nutriments.fiber;
-        var Sugar = product.nutriments.sugars;
+    var foodInfo = document.getElementById("food-info")
+    foodInfo.innerHTML = '';
+    if ('product' in data && 'nutriments' in data['product']) {
+        var product = data['product'];
+        var servingSize = product['nutriments']['serving_size']
+        var protein = product['nutriments']['proteins'];
+        var fat = product['nutriments']['fat'];
+        var carbohydrates = product['nutriments']['carbohydrates'];
+        var saturatedFat = product['nutriments']['saturated-fat'];
+        var fiber = product['nutriments']['fiber'];
+        var Sugar = product['nutriments']['sugars'];
 
-        var foodInformation = "The food information for " + data.product + ":\n" +
-                            "Serving Size: " + (servingSize || "N/A") + "\n" +
-                            "Protein: " + (protein || "N/A") + "\n" +
-                            "Fat: " + (fat || "N/A") + "\n" +
-                            "Carbohydrates: " + (carbohydrates || "N/A") +
-                            "Saturated Fats: " + (saturatedFat || "N/A") +
-                            "Fiber: " + (fiber || "N/A") +
-                            "Sugar: " + (Sugar || "N/A");
+        var foodHtml = "<h2>The food information for " + product['product_name'] + ":</h2>\n" +
+                            "<p>Serving Size: " + (servingSize || "N/A") + "</p>\n" +
+                            "<p>Protein: " + (protein || "N/A") + "</p>\n" +
+                            "<p>Fat: " + (fat || "N/A") + "</p>\n" +
+                            "<p>Carbohydrates: " + (carbohydrates || "N/A") + "</p>\n" +
+                            "<p>Saturated Fats: " + (saturatedFat || "N/A") + "</p>\n" +
+                            "<p>Fiber: " + (fiber || "N/A") + "</p>\n" +
+                            "<p>Sugar: " + (Sugar || "N/A") + "</p>";
 
-        console.log(foodInformation);
+        foodInfo.innerHTML = foodHtml;
     } else {
-        console.log("Product information is incomplete or missing.");
+        foodInfo.innerHTML = "<p>Failed to retrieve food information.</p>";
     }
 }
-
-getFoodInformation();

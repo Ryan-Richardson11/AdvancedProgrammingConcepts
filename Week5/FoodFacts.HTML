@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
     <title>Food Facts</title>
+    <link rel="Stylesheet" href="Styles.css">
 </head>
 <body>
     <h1>Food Facts</h1>
     <form id="food-form">
-        <label for="food">Select a high calorie food:</label>
+        <label for="food"><b>Select a high-calorie food:</b></label>
         <select id="food" name="food" required>
             <option value="">--Select--</option>
-            <option value="3017620429484">Nutella</option>
-            <option value="0037600106009">Peanut Butter</option>
-            <option value="3270190205685">Eggs</option>
-            <option value="3760049790214">Bread</option>
-            <option value="20724696">Almonds</option>
-            <option value="8076802085738">Pasta</option>
+            <option value="Nutella">Nutella</option>
+            <option value="Peanut Butter">Peanut Butter</option>
+            <option value="Eggs">Eggs</option>
+            <option value="Bread">Bread</option>
+            <option value="Almonds">Almonds</option>
+            <option value="Pasta">Pasta</option>
         </select>
-        <button type="submit">Get Info</button>
+        <button class="styled"; type="button" style="background-color: green;" onclick="handleClick()">Get Info</button>
     </form>
-    <script>
-        src="FoodFactAPI.js"
-    </script>
+    <script src="FoodFactAPI.js"></script>
     <div id="food-info"></div>
 </body>
 </html>
