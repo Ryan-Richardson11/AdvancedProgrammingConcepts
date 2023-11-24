@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+    <title>Food Facts</title>
+</head>
+<body>
+    <h1>Food Facts</h1>
+    <form id="food-form">
+        <label for="food">Select a high calorie food:</label>
+        <select id="food" name="food" required>
+            <option value="">--Select--</option>
+            <option value="3017620429484">Nutella</option>
+            <option value="0037600106009">Peanut Butter</option>
+            <option value="3270190205685">Eggs</option>
+            <option value="3760049790214">Bread</option>
+            <option value="20724696">Almonds</option>
+            <option value="8076802085738">Pasta</option>
+        </select>
+        <button type="submit">Get Info</button>
+    </form>
+    <script>
+        src="FoodFactAPI.js"
+    </script>
+    <div id="food-info"></div>
+</body>
+</html>
