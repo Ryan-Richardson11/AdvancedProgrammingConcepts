@@ -1,29 +1,31 @@
-// document.getElementById('weather-form').addEventListener('submit', handleClick);
+document.getElementById('weather-form').addEventListener('submit', handleClick);
 
 
-// function handleClick(event) {
-//     event.preventDefault();
-//     var city = document.getElementById('city').value;
-//     if (city == "New York") {
-//         getWeather("OKX", 33, 35);
-//     } else if (city == "Boston") {
-//         getWeather("BOX", 71, 90);
-//     } else if (city == "Orlando") {
-//         getWeather("MLB", 26, 68);
-//     } else if (city == "Chicago") {
-//         getWeather("LOT", 76, 73);
-//     } else if (city == "Washington") {
-//         getWeather("LWX", 96, 72);
-//     } else if (city == "Atlanta") {
-//         getWeather("FFC", 51, 87);
-//     } else if (city == "Seattle") {
-//         getWeather("SEW", 125, 68);
-//     } else if (city == "San Francisco") {
-//         getWeather("MTR", 85, 105);
-//     } else if (city == "Los Angeles") {
-//         getWeather("LOX", 155, 45);
-//     } 
-// }
+function handleClick(event) {
+    event.preventDefault();
+    var city = document.getElementById('city').value;
+    if (city == "Current Location"){
+        getCurrentLocation();
+    } else if (city == "New York") {
+        getWeather("OKX", 33, 35);
+    } else if (city == "Boston") {
+        getWeather("BOX", 71, 90);
+    } else if (city == "Orlando") {
+        getWeather("MLB", 26, 68);
+    } else if (city == "Chicago") {
+        getWeather("LOT", 76, 73);
+    } else if (city == "Washington") {
+        getWeather("LWX", 96, 72);
+    } else if (city == "Atlanta") {
+        getWeather("FFC", 51, 87);
+    } else if (city == "Seattle") {
+        getWeather("SEW", 125, 68);
+    } else if (city == "San Francisco") {
+        getWeather("MTR", 85, 105);
+    } else if (city == "Los Angeles") {
+        getWeather("LOX", 155, 45);
+    } 
+}
 
 function getCurrentLocation() {
     if (navigator.geolocation) {
