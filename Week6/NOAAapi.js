@@ -42,14 +42,14 @@ function getCurrentLocation() {
 function success(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    var url = "https://api.weather.gov/points/" + lat + "," + lng
+    var url = "https://api.weather.gov/points/" + lat + "," + lng;
     fetch(url)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
             locationInfo = returnParams(data);
-            displayWeather(locationInfo[0], locationInfo[1], locationInfo[2]);
+            weather = getWeather(locationInfo[0], locationInfo[1], locationInfo[2]);
         })
         .catch(function(error) {
             console.log(error);
@@ -57,7 +57,7 @@ function success(position) {
 }
 
 function unsuccess() {
-    var t = document.getElementById("coord");
+    var t = document.getElementById("weather-form");
     t.innerHTML = "&nbsp Geolocation was not allowed by the user. "+
                   "This may be a one-time refusal or you need to "+
                   "check the Location Services on your Settings.";
@@ -68,7 +68,7 @@ function returnParams(data) {
         var office = data.properties.cwa;
         var gridX = data.properties.gridX;
         var gridY = data.properties.gridY;
-        return (office, gridX, gridY)
+        return [office, gridX, gridY];
 
     } else {
         weatherInfo.innerHTML = '<p>Failed to retrieve weather information.</p>';
