@@ -26,7 +26,7 @@ function handleClick(event) {
         getWeather("LOX", 155, 45);
     } 
 }
-
+// Gets users current location and executes function depending on the result.
 function getCurrentLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -38,7 +38,7 @@ function getCurrentLocation() {
         t.innerHTML = "&nbsp Geolocation is not supported by this browser.";
     }
 }
-
+// If getCurrentLocation() is successfull, makes a call with lat and lng.
 function success(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
@@ -48,6 +48,7 @@ function success(position) {
             return response.json();
         })
         .then(function(data) {
+            // function returnParams returns offic, gridX, and gridY. Those values are passed to getWeather.
             locationInfo = returnParams(data);
             weather = getWeather(locationInfo[0], locationInfo[1], locationInfo[2]);
         })
@@ -62,7 +63,7 @@ function unsuccess() {
                   "This may be a one-time refusal or you need to "+
                   "check the Location Services on your Settings.";
 }
-
+// Returns an array of values for office, gridX, and gridY
 function returnParams(data) {
     if (data.type == "Feature") {
         var office = data.properties.cwa;
